@@ -72,8 +72,8 @@ public class ApiUserTests {
 			}
 		}
 		for (Post post : posts) {
-			if (FieldValidator.isValid(posts, post.getId()) && FieldValidator.isTextValid(post.getTitle())
-					&& FieldValidator.isTextValid(post.getBody())) {
+			if (!(FieldValidator.isValid(posts, post.getId()) && FieldValidator.isTitleValid(post.getTitle())
+					&& FieldValidator.isBodyValid(post.getBody()))) {
 				valid = false;
 			}
 		}

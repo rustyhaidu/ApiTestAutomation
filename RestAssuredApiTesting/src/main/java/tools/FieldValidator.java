@@ -24,7 +24,7 @@ public class FieldValidator {
 	    return flag;
 	}
 	
-	public static boolean isTextValid(String text) {
+	public static boolean isTitleValid(String text) {
 		boolean flag = true;
 		text = text.replace("&nbsp;"," ");
 		for (int i = 0;i<text.length();i++){
@@ -35,11 +35,31 @@ public class FieldValidator {
 				if (!(Character.isLetter(text.charAt(i)) && Character.isLowerCase(text.charAt(i)) || Character.isDigit(text.charAt(i)))){
 					flag = false;
 				}
-			}
-			
+			}			
 		}
-		return flag;
-		
+		if (text.charAt(text.length()-1) != '.' || text.charAt(text.length()-1) != '!' || text.charAt(text.length()-1) != '?'){
+			flag = false;
+		}
+		return flag;		
+	}
+	
+	public static boolean isBodyValid(String text) {
+		boolean flag = true;
+		text = text.replace("&nbsp;"," ");
+		for (int i = 0;i<text.length();i++){
+			if (!(Character.isUpperCase(text.charAt(0)) && Character.isLetter(text.charAt(0)))) {
+				flag = false;		
+			}
+			if (text.charAt(i)==' ' && i+1 <text.length()){
+				if (!(Character.isLetter(text.charAt(i)) && Character.isLowerCase(text.charAt(i)) || Character.isDigit(text.charAt(i)))){
+					flag = false;
+				}
+			}			
+		}
+		if (text.charAt(text.length()-1) != '.' || text.charAt(text.length()-1) != '!' || text.charAt(text.length()-1) != '?'){
+			flag = false;
+		}
+		return flag;		
 	}
 	
 }
